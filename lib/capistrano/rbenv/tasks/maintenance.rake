@@ -1,4 +1,5 @@
 namespace :rbenv do
+  desc 'Install rbenv and ruby-build, if necessary'
   task :setup do
     on roles(fetch(:rbenv_roles)) do
       [:rbenv, :ruby_build].each do |component|
@@ -9,6 +10,7 @@ namespace :rbenv do
     end
   end
 
+  desc 'Upgrade rbenv and ruby-build'
   task :update do
     on roles(fetch(:rbenv_roles)) do
       [fetch(:rbenv_path), fetch(:ruby_build_path)].each do |update_path|
@@ -19,6 +21,7 @@ namespace :rbenv do
     end
   end
 
+  desc 'Install a new ruby or, the one provided by rbenv_ruby if none is given.'
   task :install, [:new_ruby] do |task, args|
     on roles(fetch(:rbenv_roles)) do
       ruby_version =  args[:new_ruby] || fetch(:rbenv_ruby)
