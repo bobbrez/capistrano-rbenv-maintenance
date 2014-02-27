@@ -3,9 +3,9 @@ namespace :rbenv do
   task :setup do
     on roles(fetch(:rbenv_roles)) do
       [:rbenv, :ruby_build].each do |component|
-        path = fetch("#{component}_path".to_s)
-        url = fetch("#{component}_git_url".to_s)
-        execute :git, 'clone', url, path if test "[ ! -d #{path} ]"
+        path = fetch("#{component}_path".to_sym)
+        url = fetch("#{component}_git_url".to_sym)
+        execute :git, 'clone', url, path unless test "[ -d #{path} ]"
       end
     end
   end
@@ -36,7 +36,7 @@ namespace :rbenv do
     end
   end
 
-  before 'rbenv:map_bins', 'rbenv:setup'
+  before 'rbenv:validate', 'rbenv:setup'
   before 'rbenv:install', 'rbenv:map_bins'
   before 'rbenv:validate', 'rbenv:install'
 end
