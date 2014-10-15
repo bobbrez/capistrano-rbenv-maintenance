@@ -15,7 +15,7 @@ namespace :rbenv do
     on roles(fetch(:rbenv_roles)) do
       [fetch(:rbenv_path), fetch(:ruby_build_path)].each do |update_path|
         within update_path do
-          execute :git, 'pull'
+          execute :git, 'pull', 'origin', 'master'
         end
       end
     end
