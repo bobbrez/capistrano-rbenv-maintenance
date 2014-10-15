@@ -36,6 +36,7 @@ namespace :rbenv do
     end
   end
 
+  before 'rbenv:setup', 'rbenv:update'
   before 'rbenv:validate', 'rbenv:setup'
   before 'rbenv:install', 'rbenv:map_bins'
   before 'rbenv:validate', 'rbenv:install'
