@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "capistrano-rbenv-maintenance"
-  spec.version       = '1.0.1'
+  spec.version       = '1.2.0'
   spec.authors       = ['Bob Breznak']
   spec.email         = ['bob.breznak@gmail.com']
   spec.summary       = %q{Tasks for maintaining rbenv with Capistrano}
